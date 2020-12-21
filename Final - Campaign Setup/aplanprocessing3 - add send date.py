@@ -57,28 +57,28 @@ def report_ISP_groups(data, ispgroup):
 
 # End of Functions
 
-directory = 'E:/A-Plan August 2020/A-Plan August Renewal Data/'
-directory_2 = 'E:/A-Plan August 2020/A-Plan August Final Data/'
+directory = 'E:/A-Plan Janust 2020/A-Plan Janust Renewal Data/'
+directory_2 = 'E:/A-Plan Janust 2020/A-Plan Janust Final Data/'
 onedrive="C:/Users/Peter/OneDrive - Email Switchboard Ltd/"
 
 #directory = 'C:/Users/Peter Chaplin\OneDrive - ESB Connect/A-plan October/A-Plan October Renewal Data/'
 #directory_2 = 'C:/Users/Peter Chaplin/OneDrive - ESB Connect/A-plan October/A-Plan October Final Data/'
 #onedrive="C:/Users/Peter Chaplin/OneDrive - ESB Connect/"
 
-month = 'August20' 
+month = 'Janust20' 
 
-files = ['3989_A_Plan_Aug_Car_insurance_Branch_ESB_C.csv',\
-'3989_A_Plan_Aug_Car_insurance_National_ESB_C.csv',\
-'3989_A_Plan_Aug_Home_insurance_ESB_C.csv']
+files = ['3989_A_Plan_Jan_Car_insurance_Branch_ESB_C.csv',\
+'3989_A_Plan_Jan_Car_insurance_National_ESB_C.csv',\
+'3989_A_Plan_Jan_Home_insurance_ESB_C.csv']
 
 
 #Start processing
 cols_touse = ['email','domain','data flag','status']
-df2 = pd.read_csv(directory + "A_Plan_Aug20_newstatus_Stage1Complete_v2.csv",encoding = "utf-8",usecols= cols_touse)
+df2 = pd.read_csv(directory + "A_Plan_Jan20_newstatus_Stage1Complete_v2.csv",encoding = "utf-8",usecols= cols_touse)
 df2 = df2[~df2['data flag'].isin(['remove','Remove'])]
 ispgroups = pd.read_csv(onedrive+'ISP Group domains.csv',encoding = "ISO-8859-1")
 
-df3 = pd.read_csv(directory_2 + "Send Date Aug20.csv",encoding = "utf-8")
+df3 = pd.read_csv(directory_2 + "Send Date Jan20.csv",encoding = "utf-8")
 print(df3.head(5))
 #df3['List'] = df3['List'].str.encode(encoding = "utf-8")
 

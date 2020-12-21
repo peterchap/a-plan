@@ -1,9 +1,13 @@
-import pandas as pd 
+import pandas as pd
+import os 
 
 directory = 'E:/A-Plan/A-Plan January 2021/'
+finaldir = 'A-Plan January Final Data/'
 oemprofile = 'oempro_data_export_20201219.csv'
 cleanstats = 'oempro_cleaning_jan21_Delivery_stats.csv'
 prodstats = 'oempro_production_jan21_Delivery_stats.csv'
+openstats = 'oempro_data_export_openers_20201220.csv'
+month = 'Jan21'
 
 df1 = pd.read_csv(directory + oemprofile,encoding ='ISO-8859-1')
 df2 = pd.read_csv(directory + cleanstats,encoding ='ISO-8859-1', usecols = ['m_CampaignId', 'HARD', 'SOFT'])
@@ -45,8 +49,54 @@ df1['ID'] = 'OemPro-' + df1['CampaignID'].astype(str)
 dropcols = ['CampaignID','CampaignName','CampaignShortName', 'Sender', 'MTA']
 df1.drop(columns=dropcols, inplace=True)
 
-print(df1)
+# Create add send date and openers files
 
+sd1 = df1[['Group', 'Product', 'List', 'Filter', 'MSP', 'SendDate', 'Total']].copy()
+sd1.drop_duplicates(subset=['Group', 'Product', 'List', 'Filter', 'MSP'],\
+    keep='first', inplace=True, ignore_index=True)
+
+#Read campaign files
+basepath = directory + finaldir
+home = pd.DataFrame()
+car = pd.DataFrame()
+with os.scandir(basepath) as files:
+    for f in files:
+        df0 = pd.read_csv(basepath + f.name,encoding ='utf-8', usecols=['URN','Email'])
+        file = f.name
+        x = file.split('_')[:5]
+        df0['Group'] = x[0]
+        df0['Product'] = x[1]
+        df0['List'] = x[2]
+        df0['Filter'] = x[3]
+        if x[4] == 'Microsoft':
+            df0['MSP'] = x[4]
+        else:
+            df0['MSP'] = 'Other'
+        df0 = df0.merge(sd1, left_on=['Group', 'Product', 'List', 'Filter', 'MSP'],\
+        right_on=['Group', 'Product', 'List', 'Filter', 'MSP'], how='left')
+        df0.drop(columns=[], inplace=True)
+        if x[1]  == 'Home':
+            home = home.append(df0)
+        else:
+            car = car.append(df0)
+
+# Merge opener file
+
+openers = pd.read_csv(directory + openstats, encoding ='utf-8', sep='\t',\
+    names=['Email', 'Campign_ID','Campaign', 'Opened'], usecols=['Email','Opened'])
+
+home = home.merge(openers, on='Email', how='left')
+car = car.merge(openers, on='Email', how='left')
+home.drop(columns=['Product', 'Filter', 'MSP', 'Total'], inplace=True)
+car.drop(columns=['Product', 'Filter', 'MSP', 'Total'], inplace=True)
+
+
+home.to_csv(directory + 'A-Plan_Home_send_date_'+ month +'.csv', index=False)
+car.to_csv(directory + 'A-Plan_Car_send_date_'+ month +'.csv', index=False)
+
+
+# Create Delivery report
+'''
 df4 = pd.concat([df2,df3])
 df5 = df1.merge(df4, left_on='ID', right_on='m_CampaignId', how='left')
 df5.fillna(0, inplace=True)
@@ -71,3 +121,4 @@ df7 = df6[['Group', 'Product', 'List', 'Filter', 'MSP', 'Sent', 'Delivered',\
     'TotalOpen', 'UniqueOpen', 'pc_Open', 'TotalClick', 'UniqueClick', 'CTR']]
 
 df7.to_csv(directory + 'delivery_report.csv', index=False)
+'''
