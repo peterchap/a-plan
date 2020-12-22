@@ -41,27 +41,27 @@ def report_ISP_groups(data, ispgroup):
 
 
 
-directory = 'E:/A-Plan/A-Plan October 2020/A-Plan October Renewal Data/'
-directory_2 = 'E:/A-Plan/A-Plan October 2020/A-Plan October Final Data/'
-directory_3 = 'E:/A-Plan/A-Plan October 2020/'
-directory_4 = 'E:/A-Plan/A-Plan October 2020/Removes/'
+directory = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
+directory_2 = 'E:/A-Plan/A-Plan February 2021/A-Plan February Final Data/'
+directory_3 = 'E:/A-Plan/A-Plan February 2021/'
+directory_4 = 'E:/A-Plan/A-Plan February 2021/Removes/'
 onedrive="C:/Users/Peter/OneDrive - Email Switchboard Ltd/"
 
-#directory = 'C:/Users/Peter Chaplin\OneDrive - ESB Connect/A-plan October/A-Plan October Renewal Data/'
-#directory_2 = 'C:/Users/Peter Chaplin/OneDrive - ESB Connect/A-plan October/A-Plan October Final Data/'
+#directory = 'C:/Users/Peter Chaplin\OneDrive - ESB Connect/A-plan February/A-Plan February Renewal Data/'
+#directory_2 = 'C:/Users/Peter Chaplin/OneDrive - ESB Connect/A-plan February/A-Plan February Final Data/'
 #onedrive="C:/Users/Peter Chaplin/OneDrive - ESB Connect/"
 
-month = 'Oct20' 
+month = 'Feb21' 
 
-files = ['4034_A_Plan_Oct_Car_insurance_Branch_ESB_R.csv',\
-'4034_A_Plan_Oct_Car_insurance_National_ESB_R.csv',\
-'4034_A_Plan_Oct_Home_insurance_ESB_R.csv',\
-'4034_A_Plan_Oct_Home_insurance_ESB_DPH.csv']
+files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
+'4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv',\
+'4119_A_Plan_Feb_Home_insurance_ESB_R.csv',\
+'4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
 
-statusfile = "A_Plan_Oct20_newstatus_Stage1Complete_v2.csv"
+statusfile = "A_Plan_Feb21_newstatus_Stage1Complete_v2.csv"
 
-#home_Ins_1 = '00006_ORG23434_A_Plan_October_Home_insurance.csv'
-#home_Ins_2 = '00006_ORG23434_A_Plan_October_Home_insurance_TopUp.csv'
+#home_Ins_1 = '00006_ORG23434_A_Plan_February_Home_insurance.csv'
+#home_Ins_2 = '00006_ORG23434_A_Plan_February_Home_insurance_TopUp.csv'
 
 #ins_1 = pd.read_csv(directory + home_Ins_1,encoding = "ISO-8859-1",low_memory=False)
 #print(ins_1.shape[0])

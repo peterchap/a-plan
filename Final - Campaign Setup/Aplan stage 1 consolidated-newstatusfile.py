@@ -16,17 +16,18 @@ def remove_temp_domains(data):
     print(data.head(10))
     return data
 
-directory = 'E:/A-Plan/A-Plan December/A-Plan December Renewal Data/'
+directory = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
 onedrive = 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/Data Cleaning Project/'
 onedrive2 = 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/'
-month = 'Dec20' 
+month = 'Feb21' 
 
-listname = 'Aplan_Dec2020'
-email= ['Email']
+listname = 'Aplan_Feb2021'
+email= ['EMAIL']
 
-files = ['00006_ORG23790_A_Plan_December_Home_insurance.csv',\
-    '00005B_ORG23790_A_Plan_December_Car_insurance_National.csv',\
-    '00005A_ORG23790_A_Plan_December_Car_insurance_Branch.csv']
+files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
+    '4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv',\
+    '4119_A_Plan_Feb_Home_insurance_ESB_R.csv',\
+    '4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
 
 #excludedomains = 'aplan domain_traps_matched.csv'
 
