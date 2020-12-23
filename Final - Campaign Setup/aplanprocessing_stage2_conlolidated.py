@@ -26,15 +26,10 @@ def remove_bad_names(data):
 
 
 
-def report_ISP_groups(data, ispgroup):
-    new = data['Email'].str.split(pat="@", expand=True).copy()
-    data.loc[:,'Left']= new.iloc[:,0]
-    data.loc[:,'Domain'] = new.iloc[:,1]
-
-    ispdata = pd.merge(data, ispgroup, on='Domain', how='left')
-    ispdata.loc[ispdata['Group'].isna()] = 'Other'
-    stat = pd.DataFrame(ispdata['Group'].value_counts()).reset_index()
-    final = stat.rename(columns={'index' : 'ISP', 'Group' : 'count'}).copy()
+def report_ISP_groups(data):
+    data.loc[data['Group'].isna()] = 'Other'
+    stat = pd.DataFrame(data['Group'].value_counts()).reset_index()
+    final = stat.rename(columns={'index' : 'MSP', 'Group' : 'count'}).copy()
     return final
 
 # End of Functions
@@ -59,7 +54,7 @@ files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
 '4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
 
 statusfile = "A_Plan_Feb21_newstatus_Stage1Complete_v2.csv"
-
+valuecounts = pd.DataFrame()
 #home_Ins_1 = '00006_ORG23434_A_Plan_February_Home_insurance.csv'
 #home_Ins_2 = '00006_ORG23434_A_Plan_February_Home_insurance_TopUp.csv'
 
@@ -103,7 +98,10 @@ for file in files:
     elif "National" in file:    
         product = "NationalCar"
     else:
-        product = "Home"
+        if "DPH" in file:
+            product =  "DPH Home"
+        else:
+            product = "R Home"
     
     # get domain analysis stats
     
@@ -130,16 +128,18 @@ for file in files:
        'A-PLAN_ADDRESS2', 'A-PLAN_BRANCH_LINK', 'A-PLAN_BRANCH_MANAGE',\
        'A-PLAN_CTA1LINK', 'CODE', 'DT_EmailSource', 'list_id', 'source_url',\
        'title', 'first_name', 'last_name', 'id', 'email', 'optin_date',\
-       'is_duplicate', 'is_ok',  'Domain','user_status', 'last_open', 'last_click', \
+       'is_duplicate', 'is_ok','is_unsub',  'Domain','user_status', 'last_open', 'last_click', \
        'master_filter', 'import_filter', 'email_id','tld manager', 'Left' ]
     finalremove= removed.drop(to_dropremove, axis=1).copy()
     print('Removed', finalremove.shape)
-    print(finalremove.columns)
-    #removed.to_csv(directory + file[:-4] + "_removed.csv", index=False)
+    #print(finalremove.columns)
+    value_counts = finalremove['status'].value_counts()
+    values = pd.DataFrame(value_counts.rename_axis('Category').reset_index(name='Unique Emails'))
+    valuecounts = pd.concat([valuecounts,values])
+    removed.to_csv(directory + file[:-4] + "_removed.csv", index=False)
     
-    
-   
-    
+    '''
+ 
     df['CODEDT'] = df['CODE'] + df['DT_EmailSource'].map(str)
     df['CODEDT'] = df['CODEDT'].str.replace('.0', '')
     to_dropcols = ['list_id', 'source_url', 'title', 'first_name', 'last_name', 'id', 'email', 'optin_date', 'is_duplicate', 'is_ok', \
@@ -177,13 +177,12 @@ for file in files:
             counts = pd.DataFrame([[product,i,j[1],j[2],str(m.shape[0])]],columns=['Product','List','Type','ISP','Count'])
             filecounts = filecounts.append(counts)
             outputcheck = outputcheck + m.shape[0]
-            '''
-            ispsplit = pd.DataFrame(report_ISP_groups(m[['Email']],ispgroups))
+            
+            ispsplit = pd.DataFrame(report_ISP_groups(m[['Email', 'Group']]))
             ispsplit.loc[:,'Product'] = product
             ispsplit.loc[:,'List'] = i
-            ispsplit.loc[:,'Segment'] = j
-            ispstats = ispstats.append(ispsplit)
-            '''
+            ispsplit.loc[:,'Segment'] = j[1]
+            ispstats = ispstats.append(ispsplit)            
             
             to_mdropcols = ['CODE','DT_EmailSource','EmailOptinMonths', 'primary_membership_id',\
                 'primary_membership',  'temp', 'tld', 'type', 'location', 'tld manager',\
@@ -200,5 +199,7 @@ delta = inputcheck - outputcheck
 print("Input Check: ", inputcheck, "Output Check: ", outputcheck, "Delta: ", delta)
 print(ispstats)
 print(filecounts)
-#ispstats.to_csv(directory_3 +  "ispstats-2"+ month + ".csv", index=False)
+ispstats.to_csv(directory_3 +  "ispstats-2"+ month + ".csv", index=False)
+valuecounts.to_csv(directory_3 + "Removals_value_counts" + month + ".csv", index=True)
 filecounts.to_csv(directory_3 + "filecounts-3" + month + ".csv", index=False)
+'''

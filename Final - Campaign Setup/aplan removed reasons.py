@@ -21,17 +21,17 @@ def remove_invalid_emails(data):
 
 # End of Functions
 
-directory = 'E:/a-Plan/A-Plan October 2020/A-Plan October Renewal Data/'
-directory_2 = 'E:/A-plan/A-Plan October 2020/A-Plan October Final Data/'
+directory = 'E:/a-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
+directory_2 = 'E:/A-plan/A-Plan February 2021/A-Plan February Final Data/'
 onedrive="C:/Users/Peter/OneDrive - Email Switchboard Ltd/Data Cleaning Project/"
-month = 'Sep20' 
+month = 'Feb21' 
 
-files = ['4034_A_Plan_Oct_Car_insurance_Branch_ESB_R.csv',\
-'4034_A_Plan_Oct_Car_insurance_National_ESB_R.csv',\
-'4034_A_Plan_Oct_Home_insurance_ESB_R.csv',\
-'4034_A_Plan_Oct_Home_insurance_ESB_DPH.csv']
+files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
+'4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv',\
+'4119_A_Plan_Feb_Home_insurance_ESB_R.csv',\
+'4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
 
-statusfile = "A_Plan_Oct20_newstatus_Stage1Complete_v2.csv"
+statusfile = "A_Plan_Feb21_newstatus_Stage1Complete_v2.csv"
 
 valuecounts = pd.DataFrame()
 

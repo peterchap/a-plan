@@ -1,9 +1,9 @@
 import pandas as pd 
 import numpy as np
-import jinja2
+#import jinja2
 
-directory = 'E:/A-Plan/A-Plan October 2020/'
-file = 'filecountsOct20.csv'
+directory = 'E:/A-Plan/A-Plan February 2021/'
+file = 'filecounts-3Feb21.csv'
 
 df = pd.read_csv(directory + file)
 table1 =  pd.pivot_table(df, index='List', columns='Product', values='Count', aggfunc='sum', margins=True, margins_name= 'Total')
@@ -38,13 +38,13 @@ print(list(table3))
 #df1.index = pd.MultiIndex.from_arrays([df1.index + '_total', len(df1.index) * ['']])
 table1['Type'] = 'Total'
 table1['% of Type'] = ''
-print(table3.shape)
+print(table3)
 
-table4 = table1[['List', 'Type', 'Home', 'LocalCar', 'NationalCar', 'Total', '% of Type']]
-table4 = table4.astype({'Home' : 'int64','LocalCar': 'int64', 'NationalCar': 'int64', 'Total': 'int64'})
-
-print(table4.dtypes)
-print(table3.dtypes)
+table4 = table1[['List', 'Type', 'R Home', 'DPH Home', 'LocalCar', 'NationalCar', 'Total', '% of Type']]
+table4 = table4.astype({'R Home' : 'int64','DPH Home' : 'int64','LocalCar': 'int64', 'NationalCar': 'int64', 'Total': 'int64'})
+print(table4)
+#print(table4.dtypes)
+#print(table3.dtypes)
 df1 = pd.concat([table3,table4],axis=0,ignore_index='True').sort_values(by=['List', 'Type'],ascending=False)
 print(df1)
 df1.to_csv(directory + "Cleaning_breakdown.csv", index=False)

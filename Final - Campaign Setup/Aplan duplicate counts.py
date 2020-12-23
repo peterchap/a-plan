@@ -1,15 +1,15 @@
 import pandas as pd
 
-directory1 = 'E:/A-Plan/A-Plan October 2020/A-Plan October Renewal Data/'
-directory2 = 'E:/A-Plan/A-Plan October 2020/A-Plan October Final Data/'
-directory = 'E:/A-Plan/A-Plan October 2020/'
+directory1 = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
+directory2 = 'E:/A-Plan/A-Plan February 2021/A-Plan February Final Data/'
+directory = 'E:/A-Plan/A-Plan February 2021/'
 
-month = 'Oct20'
+month = 'Feb21'
 
-file1 = '4034_A_Plan_Oct_Car_insurance_Branch_ESB_R.csv'
-file2 = '4034_A_Plan_Oct_Car_insurance_National_ESB_R.csv'
-file3 = '4034_A_Plan_Oct_Home_insurance_ESB_R.csv'
-file4 = '4034_A_Plan_Oct_Home_insurance_ESB_DPH.csv'
+file1 = '4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv'
+file2 = '4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv'
+file3 = '4119_A_Plan_Feb_Home_insurance_ESB_R.csv'
+file4 = '4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv'
 
 
 df1 = pd.read_csv(directory1 + file1,encoding = "ISO-8859-1",low_memory=False)
