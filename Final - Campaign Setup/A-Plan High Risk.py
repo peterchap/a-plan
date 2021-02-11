@@ -1,10 +1,10 @@
 import pandas as pd 
 
-directory = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
+directory = 'E:/A-Plan/A-Plan March 2021/A-Plan March Renewal Data/'
 
-month = 'Feb21'
+month = 'Mar21'
 
-statusfile = "A_Plan_Feb21_newstatus_Stage1Complete_v2.csv"
+statusfile = "A_Plan_Mar21_newstatus_Stage1Complete_v2.csv"
 
 
 

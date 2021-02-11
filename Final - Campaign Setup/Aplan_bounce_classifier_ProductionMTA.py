@@ -10,7 +10,7 @@ from sklearn import preprocessing
 #Import scikit-learn metrics module for accuracy calculation
 from sklearn import metrics
 
-directory = "E:/A-plan August 2020/"
+directory = "E:/A-plan February 2021/"
 
 df = pd.read_csv("C:\\new bounce model data.csv")
 
@@ -41,9 +41,9 @@ y_pred = classifier.predict(counts_test)
 y_test_encoded = le.fit_transform(y_test)
 print("Accuracy:",metrics.accuracy_score(y_test_encoded, y_pred))
 
-directory2 = 'E:/A-Plan/A-Plan January 2021/'
+directory2 = 'E:/A-Plan/A-Plan February 2021/'
 
-delivery = 'Aplan_main_MTA_Delivery_201220.csv'
+delivery = 'Aplan_clean_MTA_Delivery_250121.csv'
 
 df = pd.read_csv(directory2 + delivery,sep=',',encoding = "ISO-8859-1",low_memory=False)
 print(df.shape)
@@ -63,5 +63,5 @@ bounces['Status'] = bounces['Status'].replace([0,1],['HARD','SOFT'])
 # Output to CSV file
 print("Writing")
 print(bounces.head(5))
-bounces.to_csv(directory2 + 'decisionproductionMTA_jan21.csv', index=False)
+bounces.to_csv(directory2 + 'decisioncleaningMTA_feb21.csv', index=False)
 print("Processing Complete")

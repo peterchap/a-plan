@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 #import jinja2
 
-directory = 'E:/A-Plan/A-Plan February 2021/'
-file = 'filecounts-3Feb21.csv'
+directory = 'E:/A-Plan/A-Plan March 2021/'
+file = 'filecounts-3Mar21.csv'
 
 df = pd.read_csv(directory + file)
 table1 =  pd.pivot_table(df, index='List', columns='Product', values='Count', aggfunc='sum', margins=True, margins_name= 'Total')

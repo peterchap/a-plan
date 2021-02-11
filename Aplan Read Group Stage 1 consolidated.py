@@ -19,8 +19,8 @@ def flag_temp_domains(data):
 directory = 'E:/Cleaning-todo/'
 onedrive= 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/'
 
-filename = 'Aplan data_Aug20.csv'
-month = 'jul20'
+filename = 'Aplan data_Feb21.csv'
+month = 'mar21'
 
 df = pd.read_csv(directory + filename,encoding ='utf-8')
 
@@ -83,8 +83,8 @@ print("Temp_tia processing completed successfully")
 
 
 
-df2 = pd.read_csv(onedrive + "Data Cleaning Project/Domain_status.csv",\
-    encoding = "utf-8",low_memory=False)
+df2 = pd.read_csv(onedrive + "Data Cleaning Project/domain_status.csv",\
+    encoding = "utf-8",low_memory=False, usecols=['name', 'status'])
 cols = {'name' : 'domain'}
 df2.rename(columns=cols, inplace=True)
 print(" Domain Status File",df2.shape)

@@ -1,13 +1,13 @@
 import pandas as pd
 import os 
 
-directory = 'E:/A-Plan/A-Plan January 2021/'
-finaldir = 'A-Plan January Final Data/'
-oemprofile = 'oempro_data_export_20201219.csv'
-cleanstats = 'oempro_cleaning_jan21_Delivery_stats.csv'
-prodstats = 'oempro_production_jan21_Delivery_stats.csv'
-openstats = 'oempro_data_export_openers_20201220.csv'
-month = 'Jan21'
+directory = 'E:/A-Plan/A-Plan February 2021/'
+finaldir = 'A-Plan February Final Data/'
+oemprofile = 'oempro_data_export_20210124.csv'
+cleanstats = 'oempro_cleaning_feb21_Delivery_stats.csv'
+prodstats = 'oempro_production_feb21_Delivery_stats.csv'
+openstats = 'oempro_data_export_openers_20210124.csv'
+month = 'feb21'
 
 df1 = pd.read_csv(directory + oemprofile,encoding ='ISO-8859-1')
 df2 = pd.read_csv(directory + cleanstats,encoding ='ISO-8859-1', usecols = ['m_CampaignId', 'HARD', 'SOFT'])
@@ -96,7 +96,7 @@ car.to_csv(directory + 'A-Plan_Car_send_date_'+ month +'.csv', index=False)
 
 
 # Create Delivery report
-'''
+
 df4 = pd.concat([df2,df3])
 df5 = df1.merge(df4, left_on='ID', right_on='m_CampaignId', how='left')
 df5.fillna(0, inplace=True)
@@ -121,4 +121,3 @@ df7 = df6[['Group', 'Product', 'List', 'Filter', 'MSP', 'Sent', 'Delivered',\
     'TotalOpen', 'UniqueOpen', 'pc_Open', 'TotalClick', 'UniqueClick', 'CTR']]
 
 df7.to_csv(directory + 'delivery_report.csv', index=False)
-'''

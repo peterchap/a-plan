@@ -36,27 +36,27 @@ def report_ISP_groups(data):
 
 
 
-directory = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
-directory_2 = 'E:/A-Plan/A-Plan February 2021/A-Plan February Final Data/'
-directory_3 = 'E:/A-Plan/A-Plan February 2021/'
-directory_4 = 'E:/A-Plan/A-Plan February 2021/Removes/'
+directory = 'E:/A-Plan/A-Plan March 2021/A-Plan March Renewal Data/'
+directory_2 = 'E:/A-Plan/A-Plan March 2021/A-Plan March Final Data/'
+directory_3 = 'E:/A-Plan/A-Plan March 2021/'
+directory_4 = 'E:/A-Plan/A-Plan March 2021/Removes/'
 onedrive="C:/Users/Peter/OneDrive - Email Switchboard Ltd/"
 
-#directory = 'C:/Users/Peter Chaplin\OneDrive - ESB Connect/A-plan February/A-Plan February Renewal Data/'
-#directory_2 = 'C:/Users/Peter Chaplin/OneDrive - ESB Connect/A-plan February/A-Plan February Final Data/'
+#directory = 'C:/Users/Peter Chaplin\OneDrive - ESB Connect/A-plan March/A-Plan March Renewal Data/'
+#directory_2 = 'C:/Users/Peter Chaplin/OneDrive - ESB Connect/A-plan March/A-Plan March Final Data/'
 #onedrive="C:/Users/Peter Chaplin/OneDrive - ESB Connect/"
 
-month = 'Feb21' 
+month = 'Mar21' 
 
-files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
-'4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv',\
-'4119_A_Plan_Feb_Home_insurance_ESB_R.csv',\
-'4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
+files = ['4140_A_Plan_Mar_Car_insurance_Branch_ESB_R.csv',\
+'4140_A_Plan_Mar_Car_insurance_National_ESB_R.csv',\
+'4140_A_Plan_Mar_Home_insurance_ESB_R.csv',\
+'4140_A_Plan_Mar_Home_insurance_ESB_DPH.csv']
 
-statusfile = "A_Plan_Feb21_newstatus_Stage1Complete_v2.csv"
+statusfile = "A_Plan_Mar21_newstatus_Stage1Complete_v2.csv"
 valuecounts = pd.DataFrame()
-#home_Ins_1 = '00006_ORG23434_A_Plan_February_Home_insurance.csv'
-#home_Ins_2 = '00006_ORG23434_A_Plan_February_Home_insurance_TopUp.csv'
+#home_Ins_1 = '00006_ORG23434_A_Plan_March_Home_insurance.csv'
+#home_Ins_2 = '00006_ORG23434_A_Plan_March_Home_insurance_TopUp.csv'
 
 #ins_1 = pd.read_csv(directory + home_Ins_1,encoding = "ISO-8859-1",low_memory=False)
 #print(ins_1.shape[0])
@@ -88,21 +88,25 @@ for file in files:
     print(file,df1.shape[0])
     inputcheck = inputcheck + df1.shape[0]
     df3 = pd.merge(df1, df2, left_on='Email', right_on='email', how='left')
+    print('check1', df3.shape)
     new = df3['Email'].str.split(pat="@", expand=True)
     df3.loc[:,'Left']= new.iloc[:,0]
     df3.loc[:,'Domain'] = new.iloc[:,1]
     df =  pd.merge(df3, ispgroups, left_on='Domain', right_on='Domain', how='left')
-    
+    print('check2', df.shape)
     if "Branch" in file:
         product = "LocalCar"
     elif "National" in file:    
         product = "NationalCar"
     else:
+        product = "Home"
+    '''
+    else:
         if "DPH" in file:
             product =  "DPH Home"
         else:
             product = "R Home"
-    
+    '''
     # get domain analysis stats
     
     e= pd.DataFrame(df['status'].value_counts()).reset_index()
@@ -132,13 +136,13 @@ for file in files:
        'master_filter', 'import_filter', 'email_id','tld manager', 'Left' ]
     finalremove= removed.drop(to_dropremove, axis=1).copy()
     print('Removed', finalremove.shape)
-    #print(finalremove.columns)
+    print(finalremove.columns)
     value_counts = finalremove['status'].value_counts()
     values = pd.DataFrame(value_counts.rename_axis('Category').reset_index(name='Unique Emails'))
     valuecounts = pd.concat([valuecounts,values])
     removed.to_csv(directory + file[:-4] + "_removed.csv", index=False)
     
-    '''
+  
  
     df['CODEDT'] = df['CODE'] + df['DT_EmailSource'].map(str)
     df['CODEDT'] = df['CODEDT'].str.replace('.0', '')
@@ -188,7 +192,7 @@ for file in files:
                 'primary_membership',  'temp', 'tld', 'type', 'location', 'tld manager',\
                 'Left', 'Domain', 'Group', 'ISP', 'data flag', 'CODEDT' ]
             final = m.drop(columns=to_mdropcols).copy()
-            
+           
             if "DPH" in file:
                 final.to_csv(directory_2 + "DPH_" + product + "_" + i + "_"+ j[1] + '_' + j[2] + '_' + month +".csv", index=False)
                 
@@ -199,6 +203,7 @@ delta = inputcheck - outputcheck
 print("Input Check: ", inputcheck, "Output Check: ", outputcheck, "Delta: ", delta)
 print(ispstats)
 print(filecounts)
+'''
 ispstats.to_csv(directory_3 +  "ispstats-2"+ month + ".csv", index=False)
 valuecounts.to_csv(directory_3 + "Removals_value_counts" + month + ".csv", index=True)
 filecounts.to_csv(directory_3 + "filecounts-3" + month + ".csv", index=False)

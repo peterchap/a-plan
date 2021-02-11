@@ -7,8 +7,8 @@ from pandas.io.json import json_normalize
 from pandasticsearch import Select
 from elasticsearch import Elasticsearch
 
-directory = 'E:/A-Plan/A-Plan January 2021/'
-date = '201220'
+directory = 'E:/A-Plan/A-Plan February 2021/'
+date = '250121'
 
 retry_count = 5
 for retries in range(retry_count):
@@ -47,8 +47,8 @@ data = es.search(index="logs", scroll="20m",body={
 	     # ],
 	      "filter": [
         	   {"range" : {"m_LogDate" : { 
-                    "gte" : "2020-12-02T00:00:00.000Z", 
-                    "lte" : "2020-12-17T00:00:00.000Z"}}}
+                    "gte" : "2021-01-04T00:00:00.000Z", 
+                    "lte" : "2021-01-15T00:00:00.000Z"}}}
 	        ]
 	  }
 	  }
@@ -83,6 +83,6 @@ print (df_lst.shape)
 print(list(df_lst.columns.values))
 df_lst = df_lst.sort_values('m_LogDate').drop_duplicates('m_To',keep='last')
 print (df_lst.shape)
-df_lst.to_csv(directory + "Aplan_main_MTA_Delivery_" + date + ".csv", index=False)
+df_lst.to_csv(directory + "Aplan_clean_MTA_Delivery_" + date + ".csv", index=False)
 #print (data['hits'][1])
 #print(df)

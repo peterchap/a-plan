@@ -16,18 +16,18 @@ def remove_temp_domains(data):
     print(data.head(10))
     return data
 
-directory = 'E:/A-Plan/A-Plan February 2021/A-Plan February Renewal Data/'
+directory = 'E:/A-Plan/A-Plan March 2021/A-Plan March Renewal Data/'
 onedrive = 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/Data Cleaning Project/'
 onedrive2 = 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/'
-month = 'Feb21' 
+month = 'Mar21' 
 
-listname = 'Aplan_Feb2021'
+listname = 'Aplan_Mar2021'
 email= ['EMAIL']
 
-files = ['4119_A_Plan_Feb_Car_insurance_Branch_ESB_R.csv',\
-    '4119_A_Plan_Feb_Car_insurance_National_ESB_R.csv',\
-    '4119_A_Plan_Feb_Home_insurance_ESB_R.csv',\
-    '4119_A_Plan_Feb_Home_insurance_ESB_DPH.csv']
+files = ['4140_A_Plan_Mar_Car_insurance_Branch_ESB_R.csv',\
+    '4140_A_Plan_Mar_Car_insurance_National_ESB_R.csv',\
+    '4140_A_Plan_Mar_Home_insurance_ESB_R.csv',\
+    '4140_A_Plan_Mar_Home_insurance_ESB_DPH.csv']
 
 #excludedomains = 'aplan domain_traps_matched.csv'
 
@@ -76,6 +76,8 @@ server = '78.129.204.215'
 database = 'ListRepository'
 
 engine = create_engine("mssql+pyodbc://perf_webuser:n3tw0rk!5t@t5@" + server + "/" + database + "?driver=ODBC+Driver+17+for+SQL+Server",fast_executemany=True)
+
+#engine = create_engine("mssql+pyodbc://perf_webuser:n3tw0rk!5t@t5" + server + "/" + database + "?driver=ODBC+Driver+17+for+SQL+Server",fast_executemany=True)
 
 
 cnxn = engine.connect()
