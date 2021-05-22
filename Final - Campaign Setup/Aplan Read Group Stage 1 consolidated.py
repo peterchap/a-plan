@@ -19,8 +19,8 @@ def flag_temp_domains(data):
 directory = 'E:/Cleaning-todo/'
 onedrive= 'C:/Users/Peter/OneDrive - Email Switchboard Ltd/'
 
-filename = 'Aplan data_Mar21.csv'
-month = 'mar21'
+filename = 'Aplan data_Apr21.csv'
+month = 'apr21'
 
 df = pd.read_csv(directory + filename,encoding ='utf-8')
 
