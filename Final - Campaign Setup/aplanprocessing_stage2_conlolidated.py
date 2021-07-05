@@ -28,7 +28,7 @@ def remove_invalid_emails(data):
 
 def remove_bad_names(data):
     patternDel = "abuse|account|admin|backup|cancel|career|comp|contact|crap|enquir|fake|feedback|finance|free|garbage|generic|hello|info|invalid|\
-    junk|loan|office|market|penis|person|phruit|police|postmaster|random|recep|register|sales|shit|shop|signup|spam|stuff|support|survey|test|trash|webmaster|xx"
+    Augk|loan|office|market|penis|person|phruit|police|postmaster|random|recep|register|sales|shit|shop|signup|spam|stuff|support|survey|test|trash|webmaster|xx"
     data.loc[
         data["Email"].str.contains(patternDel, na=False), ["status", "data flag"]
     ] = ("bad name", "remove")
@@ -51,32 +51,32 @@ def report_ISP_groups(data):
 # End of Functions
 
 
-directory = "E:/A-Plan/A-Plan June 2021/A-Plan June Renewal Data/"
-directory_2 = "E:/A-Plan/A-Plan June 2021/A-Plan June Final Data/"
-directory_3 = "E:/A-Plan/A-Plan June 2021/"
-directory_4 = "E:/A-Plan/A-Plan June 2021/Removes/"
+directory = "E:/A-Plan/A-Plan August 2021/A-Plan August Renewal Data/"
+directory_2 = "E:/A-Plan/A-Plan August 2021/A-Plan August Final Data/"
+directory_3 = "E:/A-Plan/A-Plan August 2021/"
+directory_4 = "E:/A-Plan/A-Plan August 2021/Removes/"
 onedrive = "C:/Users/Peter/OneDrive - Email Switchboard Ltd/"
 
-month = "Jun21_DPM2"
-"""
+month = "Aug21"
+
 files = [
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_DPM.csv",
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MG1.csv",
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MUK.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_DPM.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_MG1.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_MUK.csv",
-    "4206_A_Plan_Jun_Home_insurance_ESB_DPH.csv",
-    "4206_A_Plan_Jun_Home_insurance_ESB_H1.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_DPM.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MG1UK.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MUK.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_DPM.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_MG1UK.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_MUK.csv",
+    "4251_A_Plan_Aug_Home_insurance_ESB_DPH.csv",
+    "4251_A_Plan_Aug_Home_insurance_ESB_H1.csv",
 ]
 """
 files = [
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_DPM2.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_DPM2.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_DPM2.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_DPM2.csv",
 ]
+"""
 
-
-statusfile = "A_Plan_Jun21_DPM2_newstatus_Stage1Complete_v2.csv"
+statusfile = "A_Plan_" + month + "_newstatus_Stage1Complete_v2.csv"
 valuecounts = pd.DataFrame()
 
 
@@ -292,7 +292,7 @@ print(ispstats)
 print(filecounts)
 
 ispstats.to_csv(directory_3 + "ispstats-2" + month + ".csv", index=False)
-valuecounts.to_csv(directory_3 + "Removals_value_counts" + month + ".csv", index=True)
+valuecounts.to_csv(directory_3 + "Removals_value_counts" + month + ".csv", index=False)
 
 
 filecounts.to_csv(directory_3 + "filecounts-4" + month + ".csv", index=False)

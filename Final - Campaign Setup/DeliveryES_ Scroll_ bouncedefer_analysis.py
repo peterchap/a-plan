@@ -9,8 +9,8 @@ from pandas.io.json import json_normalize
 from pandasticsearch import Select
 from elasticsearch import Elasticsearch
 
-directory = "E:/A-Plan/A-Plan June 2021/"
-date = "210521"
+directory = "E:/A-Plan/A-Plan July 2021/"
+date = "180621"
 
 retry_count = 5
 for retries in range(retry_count):
@@ -55,8 +55,8 @@ data = es.search(
                     {
                         "range": {
                             "m_LogDate": {
-                                "gte": "2021-05-04T00:00:00.000Z",
-                                "lte": "2021-05-16T00:00:00.000Z",
+                                "gte": "2021-06-03T00:00:00.000Z",
+                                "lte": "2021-06-17T00:00:00.000Z",
                             }
                         }
                     }

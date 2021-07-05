@@ -1,14 +1,16 @@
 import pandas as pd
 import os
 
-directory = "E:/A-Plan/A-Plan May 2021/"
-finaldir = "A-Plan May Final Data/"
-oemprofile = "oempro_data_export_20210422.csv"
-cleanstats = "oempro_cleaning_may21_Delivery_stats.csv"
-prodstats = "oempro_production_may21_Delivery_stats.csv"
-openstats = "oempro_data_export_openers_20210422.csv"
-clickstats = "oempro_data_export_clicks_20210422.csv"
-month = "may21"
+directory = "E:/A-Plan/A-Plan July 2021/"
+finaldir = "A-Plan July Final Data/"
+oemprofile = "oempro_data_export_20210617.csv"
+cleanstats = "oempro_cleaning_jul21_Delivery_stats.csv"
+prodstats = "oempro_production_jul21_Delivery_stats.csv"
+openstats = "oempro_data_export_openers_20210617.csv"
+clickstats = (
+    "oempro_data_export_clicks_20210617.csv"  # convert to csv and save as  utf-8
+)
+month = "jul21"
 
 df1 = pd.read_csv(directory + oemprofile, encoding="ISO-8859-1")
 df2 = pd.read_csv(
@@ -38,7 +40,7 @@ print("check", df1.shape)
 df1 = df1[df1["CampaignName"].str.contains("AUTOCAMPAIGN:", case=True, na=False)]
 
 df1.loc[df1["CampaignName"].str.contains("LIST: DPH_", case=True), ["Group"]] = "DPH"
-df1.loc[df1["CampaignName"].str.contains("LIST: DPM2_", case=True), ["Group"]] = "DPM2"
+df1.loc[df1["CampaignName"].str.contains("LIST: DPM_", case=True), ["Group"]] = "DPM"
 df1.loc[df1["CampaignName"].str.contains("LIST: H1_", case=True), ["Group"]] = "H1"
 df1.loc[df1["CampaignName"].str.contains("LIST: MG_", case=True), ["Group"]] = "MG"
 df1.loc[df1["CampaignName"].str.contains("LIST: MUK_", case=True), ["Group"]] = "MUK"
@@ -265,3 +267,4 @@ df7 = df6[
 ]
 
 df7.to_csv(directory + "delivery_report.csv", index=False)
+

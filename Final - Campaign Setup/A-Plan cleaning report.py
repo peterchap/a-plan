@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-directory = "E:/A-Plan/A-Plan June 2021/"
-file = "filecounts-4Jun21.csv"
+directory = "E:/A-Plan/A-Plan August 2021/"
+file = "filecounts-4Aug21.csv"
 
 df = pd.read_csv(directory + file)
 table1 = pd.pivot_table(

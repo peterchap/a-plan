@@ -1,19 +1,19 @@
 import pandas as pd
 
-directory1 = "E:/A-Plan/A-Plan June 2021/A-Plan June Renewal Data/"
-directory2 = "E:/A-Plan/A-Plan June 2021/A-Plan June Final Data/"
-directory = "E:/A-Plan/A-Plan June 2021/"
+directory1 = "E:/A-Plan/A-Plan August 2021/A-Plan August Renewal Data/"
+directory2 = "E:/A-Plan/A-Plan August 2021/A-Plan August Final Data/"
+directory = "E:/A-Plan/A-Plan August 2021/"
 
-month = "JUN21"
+month = "Aug21"
 
-file1 = "4206_A_Plan_Jun_Car_insurance_Branch_ESB_DPM.csv"
-file2 = "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MG1.csv"
-file3 = "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MUK.csv"
-file4 = "4206_A_Plan_Jun_Car_insurance_National_ESB_DPM.csv"
-file5 = "4206_A_Plan_Jun_Car_insurance_National_ESB_MG1.csv"
-file6 = "4206_A_Plan_Jun_Car_insurance_National_ESB_MUK.csv"
-file7 = "4206_A_Plan_Jun_Home_insurance_ESB_DPH.csv"
-file8 = "4206_A_Plan_Jun_Home_insurance_ESB_H1.csv"
+file1 = "4251_A_Plan_Aug_Car_insurance_Branch_ESB_DPM.csv"
+file2 = "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MG1UK.csv"
+file3 = "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MUK.csv"
+file4 = "4251_A_Plan_Aug_Car_insurance_National_ESB_DPM.csv"
+file5 = "4251_A_Plan_Aug_Car_insurance_National_ESB_MG1UK.csv"
+file6 = "4251_A_Plan_Aug_Car_insurance_National_ESB_MUK.csv"
+file7 = "4251_A_Plan_Aug_Home_insurance_ESB_DPH.csv"
+file8 = "4251_A_Plan_Aug_Home_insurance_ESB_H1.csv"
 
 
 df1 = pd.read_csv(

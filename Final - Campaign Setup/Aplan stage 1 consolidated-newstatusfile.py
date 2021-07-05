@@ -18,30 +18,30 @@ def remove_temp_domains(data):
     return data
 
 
-directory = "E:/A-Plan/A-Plan June 2021/A-Plan June Renewal Data/"
+directory = "E:/A-Plan/A-Plan August 2021/A-Plan August Renewal Data/"
 onedrive = "C:/Users/Peter/OneDrive - Email Switchboard Ltd/Data Cleaning Project/"
 onedrive2 = "C:/Users/Peter/OneDrive - Email Switchboard Ltd/"
-month = "Jun21_DPM2"
+month = "Aug21"
 
-listname = "Aplan_Jun2021"
+listname = "Aplan_Aug2021"
 email = ["EMAIL"]
-"""
-files = [
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_DPM.csv",
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MG1.csv",
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_MUK.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_DPM.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_MG1.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_MUK.csv",
-    "4206_A_Plan_Jun_Home_insurance_ESB_DPH.csv",
-    "4206_A_Plan_Jun_Home_insurance_ESB_H1.csv",
-]
-"""
-files = [
-    "4206_A_Plan_Jun_Car_insurance_Branch_ESB_DPM2.csv",
-    "4206_A_Plan_Jun_Car_insurance_National_ESB_DPM2.csv",
-]
 
+files = [
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_DPM.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MG1UK.csv",
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_MUK.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_DPM.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_MG1UK.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_MUK.csv",
+    "4251_A_Plan_Aug_Home_insurance_ESB_DPH.csv",
+    "4251_A_Plan_Aug_Home_insurance_ESB_H1.csv",
+]
+"""
+files = [
+    "4251_A_Plan_Aug_Car_insurance_Branch_ESB_DPM2.csv",
+    "4251_A_Plan_Aug_Car_insurance_National_ESB_DPM2.csv",
+]
+"""
 
 stats = pd.DataFrame(columns=["File", "Count"])
 df = pd.DataFrame()

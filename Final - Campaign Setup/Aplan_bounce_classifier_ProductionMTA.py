@@ -43,9 +43,9 @@ y_pred = classifier.predict(counts_test)
 y_test_encoded = le.fit_transform(y_test)
 print("Accuracy:", metrics.accuracy_score(y_test_encoded, y_pred))
 
-directory2 = "E:/A-Plan/A-Plan June 2021/"
+directory2 = "E:/A-Plan/A-Plan July 2021/"
 
-delivery = "Aplan_production_MTA_Delivery210521.csv"
+delivery = "Aplan_cleaning_MTA_Delivery180621.csv"
 
 df = pd.read_csv(
     directory2 + delivery, sep=",", encoding="ISO-8859-1", low_memory=False
@@ -67,5 +67,5 @@ bounces["Status"] = bounces["Status"].replace([0, 1], ["HARD", "SOFT"])
 # Output to CSV file
 print("Writing")
 print(bounces.head(5))
-bounces.to_csv(directory2 + "decisionproductionMTA_jun21.csv", index=False)
+bounces.to_csv(directory2 + "decisioncleaningMTA_jul21.csv", index=False)
 print("Processing Complete")

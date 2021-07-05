@@ -1,10 +1,10 @@
 import pandas as pd
 import glob, os
 
-directory1 = "E:/A-Plan/A-Plan June 2021/"
+directory1 = "E:/A-Plan/A-Plan July 2021/"
 
-file1 = "Aplan_production_MTA_Delivery210521.csv"
-file2 = "decisionproductionMTA_jun21.csv"
+file1 = "Aplan_cleaning_MTA_Delivery180621.csv"
+file2 = "decisioncleaningMTA_jul21.csv"
 
 df1 = pd.read_csv(directory1 + file1, encoding="ISO-8859-1")
 df1.sort_values(by=["m_CampaignId", "m_LogDate"], inplace=True)
@@ -36,4 +36,4 @@ a = pd.DataFrame(
 ).reset_index()
 b = pd.pivot_table(a, values="count", index="m_CampaignId", columns="Bounce")
 print(b.shape)
-b.to_csv(directory1 + "oempro_production_jun21_Delivery_stats.csv", index=True)
+b.to_csv(directory1 + "oempro_cleaning_jul21_Delivery_stats.csv", index=True)
